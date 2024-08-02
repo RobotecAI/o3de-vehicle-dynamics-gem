@@ -2,12 +2,12 @@
     "Amazon": {
         "AssetProcessor": {
             "Settings": {
-                "ScanFolder vehicle-dynamics-gem/Assets": {
+                "ScanFolder VehicleDynamics/Assets": {
                     "watch": "@GEMROOT:VehicleDynamics@/Assets",
                     "recursive": 1,
                     "order": 101
                 },
-                "ScanFolder vehicle-dynamics-gem/Registry": {
+                "ScanFolder VehicleDynamics/Registry": {
                     "watch": "@GEMROOT:VehicleDynamics@/Registry",
                     "recursive": 1,
                     "order": 102
