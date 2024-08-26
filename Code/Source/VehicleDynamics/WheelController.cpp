@@ -104,7 +104,7 @@ namespace VehicleDynamics
 
         AzPhysics::CollisionGroup collisionGroup;
         Physics::CollisionRequestBus::BroadcastResult(
-            collisionGroup, &Physics::CollisionRequestBus::Events::GetCollisionGroupById, m_configuration.m_collisionGroupId);
+            collisionGroup, &Physics::CollisionRequestBus::Events::GetCollisionGroupByName, m_configuration.m_collisionGroupName);
 
         AzPhysics::RayCastRequest request = AzPhysics::RayCastRequest();
         request.m_collisionGroup = collisionGroup;

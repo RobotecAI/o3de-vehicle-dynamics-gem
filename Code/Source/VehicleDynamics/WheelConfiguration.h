@@ -12,8 +12,10 @@
 
 #include <AzCore/Component/EntityId.h>
 #include <AzCore/RTTI/RTTI.h>
+#include <AzCore/Serialization/EditContext.h>
 #include <AzCore/Serialization/SerializeContext.h>
 #include <AzFramework/Physics/Collision/CollisionGroups.h>
+#include <AzFramework/Physics/PhysicsSystem.h>
 
 namespace VehicleDynamics
 {
@@ -23,7 +25,8 @@ namespace VehicleDynamics
 
         static void Reflect(AZ::ReflectContext* context);
 
-        AzPhysics::CollisionGroups::Id m_collisionGroupId;
+        AZStd::string m_collisionGroupName = "All"; //!< Name of the collision group with which the wheel collides. Kept as a string due to
+                                                    //!< different collision groups id in different projects.
 
         AZ::EntityId m_wheelVisualEntityId;
 
@@ -38,5 +41,8 @@ namespace VehicleDynamics
         float m_lateralFrictionC2{ 1.7f };
         float m_lateralFrictionC3{ 2.0f };
         float m_longitudinalForceCoef{ 1.0f };
+
+    private:
+        AZStd::vector<AZStd::string> GetGroupNameList();
     };
 } // namespace VehicleDynamics
