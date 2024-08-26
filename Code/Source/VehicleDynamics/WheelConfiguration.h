@@ -13,6 +13,7 @@
 #include <AzCore/Component/EntityId.h>
 #include <AzCore/RTTI/RTTI.h>
 #include <AzCore/Serialization/SerializeContext.h>
+#include <AzFramework/Physics/Collision/CollisionGroups.h>
 
 namespace VehicleDynamics
 {
@@ -21,6 +22,8 @@ namespace VehicleDynamics
         AZ_TYPE_INFO(WheelConfiguration, WheelConfigurationTypeId);
 
         static void Reflect(AZ::ReflectContext* context);
+
+        AzPhysics::CollisionGroups::Id m_collisionGroupId;
 
         AZ::EntityId m_wheelVisualEntityId;
 

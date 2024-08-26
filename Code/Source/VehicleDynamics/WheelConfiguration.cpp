@@ -18,6 +18,7 @@ namespace VehicleDynamics
         {
             serializeContext->Class<WheelConfiguration>()
                 ->Version(0)
+                ->Field("collisionGroupId", &WheelConfiguration::m_collisionGroupId)
                 ->Field("wheelVisualEntityId", &WheelConfiguration::m_wheelVisualEntityId)
                 ->Field("springStiffness", &WheelConfiguration::m_suspensionStiffness)
                 ->Field("suspensionDamping", &WheelConfiguration::m_suspensionDamping)
@@ -32,6 +33,11 @@ namespace VehicleDynamics
             if (auto editContext = serializeContext->GetEditContext())
             {
                 editContext->Class<WheelConfiguration>("Wheel", "Wheel")
+                    ->DataElement(
+                        AZ::Edit::UIHandlers::Default,
+                        &WheelConfiguration::m_collisionGroupId,
+                        "Collides with",
+                        "Collision group with which the wheel collides")
                     ->DataElement(
                         AZ::Edit::UIHandlers::Default,
                         &WheelConfiguration::m_wheelVisualEntityId,
