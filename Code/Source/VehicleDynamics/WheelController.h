@@ -42,6 +42,7 @@ namespace VehicleDynamics
         void SetDriveForce(const float force);
         void SetSteeringAngle(const float steeringAngle);
         void SetVehicleEntity(const AZ::EntityId& vehicleEntityId);
+        void SetCollisionGroup(const AZStd::string& groupName);
 
     protected:
         //////////////////////////////////////////////////////////////////////////

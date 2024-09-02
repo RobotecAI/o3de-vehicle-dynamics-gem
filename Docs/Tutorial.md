@@ -100,3 +100,16 @@ The component should look similar to this:
 ### Step 6
 
 The model is ready. You can now test it in the game mode.
+
+
+### Optional - setting collision layers
+Each wheel can be configured with a specific collision group. This will change the definition of the ground on which the wheel drives. By default the `All` group is selected, meaning that the wheel will drive on all objects. This can be used to define surfaces on which the vehicle can drive. See the [O3DE Collision layers](https://docs.o3de.org/docs/user-guide/interactivity/physics/nvidia-physx/configuring/configuration-collision-layers/) and [O3DE Collision groups](https://docs.o3de.org/docs/user-guide/interactivity/physics/nvidia-physx/configuring/configuration-collision-groups/) documentation for more information.  
+
+Example (setting the wheels to drive only on the `Ground` layer):
+1. In O3DE select the `Tools` menu, then `PhysX Configuration`.
+2. Select the `Collision Filtering` tab, and in the `Layers` menu add a new layer named `Ground`.
+3. In the `Groups` menu add a new group named `Ground`.
+4. Uncheck the `Default` layer for the `Ground` group and keep the `Ground` layer checked.
+5. Select the ground entity and in the `PhysX Collider` component set the `Collision Layer` to `Ground`.
+6. In the `Wheel Controller` component set the `Collision Group` to `Ground` for all wheels.
+7. Now the vehicle will only drive on the ground entity.
