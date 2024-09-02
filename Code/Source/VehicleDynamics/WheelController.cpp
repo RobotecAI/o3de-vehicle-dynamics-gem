@@ -47,6 +47,11 @@ namespace VehicleDynamics
         m_vehicleEntityId = vehicleEntityId;
     }
 
+    void WheelController::SetCollisionGroup(const AZStd::string& collisionGroupName)
+    {
+        m_configuration.m_collisionGroupName = collisionGroupName;
+    }
+
     void WheelController::Activate()
     {
         m_springLength = m_configuration.m_springRestLength;

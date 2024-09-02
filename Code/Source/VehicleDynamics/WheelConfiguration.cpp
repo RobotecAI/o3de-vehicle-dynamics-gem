@@ -18,7 +18,6 @@ namespace VehicleDynamics
         {
             serializeContext->Class<WheelConfiguration>()
                 ->Version(0)
-                ->Field("collisionGroupName", &WheelConfiguration::m_collisionGroupName)
                 ->Field("wheelVisualEntityId", &WheelConfiguration::m_wheelVisualEntityId)
                 ->Field("springStiffness", &WheelConfiguration::m_suspensionStiffness)
                 ->Field("suspensionDamping", &WheelConfiguration::m_suspensionDamping)
@@ -33,12 +32,6 @@ namespace VehicleDynamics
             if (auto editContext = serializeContext->GetEditContext())
             {
                 editContext->Class<WheelConfiguration>("Wheel", "Wheel")
-                    ->DataElement(
-                        AZ::Edit::UIHandlers::ComboBox,
-                        &WheelConfiguration::m_collisionGroupName,
-                        "Collides with",
-                        "Collision group with which the wheel collides")
-                    ->Attribute(AZ::Edit::Attributes::StringList, &WheelConfiguration::GetGroupNameList)
                     ->DataElement(
                         AZ::Edit::UIHandlers::Default,
                         &WheelConfiguration::m_wheelVisualEntityId,
@@ -88,21 +81,4 @@ namespace VehicleDynamics
             }
         }
     }
-
-    AZStd::vector<AZStd::string> WheelConfiguration::GetGroupNameList()
-    {
-        const AzPhysics::CollisionConfiguration& configuration =
-            AZ::Interface<AzPhysics::SystemInterface>::Get()->GetConfiguration()->m_collisionConfig;
-        const AZStd::vector<AzPhysics::CollisionGroups::Preset>& collisionGroupPresets = configuration.m_collisionGroups.GetPresets();
-
-        AZStd::vector<AZStd::string> groupNames;
-        groupNames.reserve(collisionGroupPresets.size());
-
-        for (const auto& preset : collisionGroupPresets)
-        {
-            groupNames.push_back(preset.m_name);
-        }
-        return groupNames;
-    }
-
 } // namespace VehicleDynamics

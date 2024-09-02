@@ -25,9 +25,6 @@ namespace VehicleDynamics
 
         static void Reflect(AZ::ReflectContext* context);
 
-        AZStd::string m_collisionGroupName = "All"; //!< Name of the collision group with which the wheel collides. Kept as a string due to
-                                                    //!< different collision groups id in different projects.
-
         AZ::EntityId m_wheelVisualEntityId;
 
         float m_suspensionStiffness{ 10000.0f };
@@ -42,7 +39,7 @@ namespace VehicleDynamics
         float m_lateralFrictionC3{ 2.0f };
         float m_longitudinalForceCoef{ 1.0f };
 
-    private:
-        AZStd::vector<AZStd::string> GetGroupNameList();
+        AZStd::string m_collisionGroupName = "All"; //!< Name of the collision group with which the wheel collides. Kept as a string due to
+                                                    //!< different collision groups id in different projects. This value is not serialized.
     };
 } // namespace VehicleDynamics
