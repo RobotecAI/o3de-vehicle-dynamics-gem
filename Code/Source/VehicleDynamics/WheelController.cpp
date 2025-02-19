@@ -9,6 +9,8 @@
 #include "WheelController.h"
 
 #include <AzCore/Math/MathUtils.h>
+#include <AzFramework/Physics/Collision/CollisionGroups.h>
+#include <AzFramework/Physics/CollisionBus.h>
 #include <AzFramework/Physics/PhysicsScene.h>
 #include <AzFramework/Physics/PhysicsSystem.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
@@ -43,6 +45,11 @@ namespace VehicleDynamics
     void WheelController::SetVehicleEntity(const AZ::EntityId& vehicleEntityId)
     {
         m_vehicleEntityId = vehicleEntityId;
+    }
+
+    void WheelController::SetCollisionGroup(const AZStd::string& collisionGroupName)
+    {
+        m_configuration.m_collisionGroupName = collisionGroupName;
     }
 
     void WheelController::Activate()
@@ -100,7 +107,12 @@ namespace VehicleDynamics
         AZ::TransformBus::EventResult(m_wheelWorldTM, GetEntityId(), &AZ::TransformBus::Events::GetWorldTM);
         const auto downDir = m_wheelWorldTM.GetRotation().TransformVector(AZ::Vector3::CreateAxisZ(-1.0f));
 
+        AzPhysics::CollisionGroup collisionGroup;
+        Physics::CollisionRequestBus::BroadcastResult(
+            collisionGroup, &Physics::CollisionRequestBus::Events::GetCollisionGroupByName, m_configuration.m_collisionGroupName);
+
         AzPhysics::RayCastRequest request = AzPhysics::RayCastRequest();
+        request.m_collisionGroup = collisionGroup;
         request.m_start = m_wheelWorldTM.GetTranslation();
         request.m_direction = downDir;
         request.m_distance = m_springMaxLength + m_configuration.m_wheelRadius;

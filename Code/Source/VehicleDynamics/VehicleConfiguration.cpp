@@ -19,6 +19,7 @@ namespace VehicleDynamics
         {
             serializeContext->Class<VehicleConfiguration>()
                 ->Version(0)
+                ->Field("collisionGroupName", &VehicleConfiguration::m_collisionGroupName)
                 ->Field("wheelBase", &VehicleConfiguration::m_wheelbase)
                 ->Field("rearTrack", &VehicleConfiguration::m_track)
                 ->Field("turnRadius", &VehicleConfiguration::m_turnRadius)
@@ -35,6 +36,12 @@ namespace VehicleDynamics
             if (auto editContext = serializeContext->GetEditContext())
             {
                 editContext->Class<VehicleConfiguration>("VehicleControl", "VehicleControl")
+                    ->DataElement(
+                        AZ::Edit::UIHandlers::ComboBox,
+                        &VehicleConfiguration::m_collisionGroupName,
+                        "Collides with",
+                        "Collision group with which the wheel collides")
+                    ->Attribute(AZ::Edit::Attributes::StringList, &VehicleConfiguration::GetGroupNameList)
                     ->DataElement(
                         AZ::Edit::UIHandlers::Default,
                         &VehicleConfiguration::m_wheelbase,
@@ -92,6 +99,22 @@ namespace VehicleDynamics
                         "Steering wheel entity");
             }
         }
+    }
+
+    AZStd::vector<AZStd::string> VehicleConfiguration::GetGroupNameList()
+    {
+        const AzPhysics::CollisionConfiguration& configuration =
+            AZ::Interface<AzPhysics::SystemInterface>::Get()->GetConfiguration()->m_collisionConfig;
+        const AZStd::vector<AzPhysics::CollisionGroups::Preset>& collisionGroupPresets = configuration.m_collisionGroups.GetPresets();
+
+        AZStd::vector<AZStd::string> groupNames;
+        groupNames.reserve(collisionGroupPresets.size());
+
+        for (const auto& preset : collisionGroupPresets)
+        {
+            groupNames.push_back(preset.m_name);
+        }
+        return groupNames;
     }
 
 } // namespace VehicleDynamics

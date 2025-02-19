@@ -138,6 +138,7 @@ namespace VehicleDynamics
             if (wheel)
             {
                 wheel->SetVehicleEntity(GetEntityId());
+                wheel->SetCollisionGroup(m_configuration.m_collisionGroupName);
                 m_frontAxleWheelControllers.push_back(wheel);
             }
         }
@@ -150,6 +151,7 @@ namespace VehicleDynamics
             if (wheel)
             {
                 wheel->SetVehicleEntity(GetEntityId());
+                wheel->SetCollisionGroup(m_configuration.m_collisionGroupName);
                 m_rearAxleWheelControllers.push_back(wheel);
             }
         }

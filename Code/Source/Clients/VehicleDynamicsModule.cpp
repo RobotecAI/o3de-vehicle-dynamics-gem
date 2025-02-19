@@ -20,4 +20,4 @@ namespace VehicleDynamics
     };
 } // namespace VehicleDynamics
 
-AZ_DECLARE_MODULE_CLASS(Gem_vehicle_dynamics_gem, VehicleDynamics::VehicleDynamicsModule)
+AZ_DECLARE_MODULE_CLASS(Gem_VehicleDynamics, VehicleDynamics::VehicleDynamicsModule)

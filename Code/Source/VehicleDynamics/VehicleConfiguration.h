@@ -23,6 +23,9 @@ namespace VehicleDynamics
         AZ_TYPE_INFO(VehicleConfiguration, VehicleConfigurationTypeId);
         static void Reflect(AZ::ReflectContext* context);
 
+        AZStd::string m_collisionGroupName = "All"; //!< Name of the collision group with which the wheel collides. Kept as a string due to
+                                                    //!< different collision groups id in different projects.
+
         float m_wheelbase{ 2.7f }; // [m]
         float m_track{ 1.5f }; // [m]
         float m_turnRadius{ 10.0f }; // [m]
@@ -39,5 +42,8 @@ namespace VehicleDynamics
         AZStd::vector<AZ::EntityId> m_rearAxleWheelIds;
 
         AZ::EntityId m_steeringWheelId;
+
+    private:
+        AZStd::vector<AZStd::string> GetGroupNameList();
     };
 } // namespace VehicleDynamics

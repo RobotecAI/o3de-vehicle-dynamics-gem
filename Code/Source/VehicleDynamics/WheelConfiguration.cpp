@@ -81,5 +81,4 @@ namespace VehicleDynamics
             }
         }
     }
-
 } // namespace VehicleDynamics
