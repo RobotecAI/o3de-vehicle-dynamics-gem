@@ -26,3 +26,13 @@ The example car prefab is located in the [Assets/ExampleCar](./Assets/ExampleCar
 ![Example car](./Docs/Images/Example_car2.gif)
 
 The model of the car is licensed CC0 and was obtained from the [Sketchfab website](https://sketchfab.com/3d-models/free-concept-car-025-public-domain-cc0-e3a65443d3e44c33b594cec591c01c05) (available on 08/16/2024).
+
+## Release notes
+### 1.0.1
+Changes compared to `1.0.0`
+- Fix in collision layers
+- Fix Linux build failure introduced with cmake 3.28.3
+- Fix for Linux monolithic build
+
+### 1.0.0
+Initial release
