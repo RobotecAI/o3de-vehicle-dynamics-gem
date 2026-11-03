@@ -1,3 +1,5 @@
+[![Apache License, Version 2.0][apache_shield]][apache]
+
 # VehicleDynamics
 
 ![Example car](Docs/Images/Vehicle_dynamics_overview.png)
@@ -28,6 +30,9 @@ The example car prefab is located in the [Assets/ExampleCar](./Assets/ExampleCar
 The model of the car is licensed CC0 and was obtained from the [Sketchfab website](https://sketchfab.com/3d-models/free-concept-car-025-public-domain-cc0-e3a65443d3e44c33b594cec591c01c05) (available on 08/16/2024).
 
 ## Release notes
+### 1.0.2
+- Fixed licensing inconsistencies
+
 ### 1.0.1
 Changes compared to `1.0.0`
 - Fix in collision layers
@@ -36,3 +41,11 @@ Changes compared to `1.0.0`
 
 ### 1.0.0
 Initial release
+
+---
+
+This work is licensed under [Apache License, Version 2.0][apache]. You may elect at your option to use the [MIT License][mit] instead. Contributions must be made under both licenses.
+
+[apache]: https://opensource.org/licenses/Apache-2.0
+[mit]: https://opensource.org/licenses/MIT
+[apache_shield]: https://img.shields.io/badge/License-Apache_2.0-blue.svg

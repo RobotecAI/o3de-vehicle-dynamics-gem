@@ -1,8 +1,8 @@
 {
     "gem_name": "VehicleDynamics",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "display_name": "Vehicle Dynamics Gem",
-    "license": "Apache-2.0",
+    "license": "Apache-2.0 OR MIT",
     "license_url": "https://opensource.org/licenses/Apache-2.0",
     "origin": "Robotec.ai",
     "origin_url": "https://robotec.ai",
