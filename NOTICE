@@ -1,0 +1,6 @@
+VehicleDynamics Gem for Open 3D Engine
+Copyright 2024-2026 Robotec.ai sp. z o.o.
+
+This gem is licensed under Apache-2.0 OR MIT (see LICENSE.TXT), except for the example car model below.
+
+Assets/ExampleCar/Models (model and textures): "Free Concept Car 025" from Sketchfab (https://sketchfab.com/3d-models/free-concept-car-025-public-domain-cc0-e3a65443d3e44c33b594cec591c01c05), CC0-1.0, used without modification.
